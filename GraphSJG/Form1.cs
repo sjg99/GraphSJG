@@ -27,48 +27,51 @@ namespace GraphSJG
             int ic = Interval;            
             int x = 400;
             int y = 400;
-            int px = -Interval;
-            Point[] points = new Point[Interval*2];
+            decimal px = -Interval;
+            Point[] points;
             Bitmap bmp = new Bitmap(800, 800);
             Graphics g = Graphics.FromImage(bmp);
             g.DrawLine(new Pen(Color.Black, 3), 400, 0, 400, 800);
             g.DrawLine(new Pen(Color.Black, 3), 0, 400, 800, 400);
             if (Interval <= 10)
             {
+                points = new Point[Interval*20];
                 for (int i = 0; i <= 800; i = i + (400 / Interval))
                 {
                     g.DrawString(Convert.ToString(-ic), new Font("Calibri", 11), new SolidBrush(Color.LawnGreen), i, y);
                     g.DrawString(Convert.ToString(ic), new Font("Calibri", 11), new SolidBrush(Color.LawnGreen), x, i);
                     ic = ic - 1;
                 }
-                for(int i = 0; i < Interval*2; i++)
+                for(int i = 0; i < Interval*20; i++)
                 {
                     decimal fx = (a * (px * px)) + (b * px) + (c);
-                    int ppx = (px * (400 / Interval))+400;
+                    decimal ppx = (px * (400 / Interval))+400;
                     decimal pfx = -(fx * (400 / Interval))+400;
-                    points[i] = new Point(ppx, Convert.ToInt32(pfx));
-                    px = px + 1;
+                    points[i] = new Point(Convert.ToInt32(ppx), Convert.ToInt32(pfx));
+                    px = px + (1/10);
                 }
             }
             else if (Interval <= 50)
             {
+                points = new Point[Interval*4]
                 for (int i = 0; i <= 800; i = i + (400 / (Interval/5)))
                 {
                     g.DrawString(Convert.ToString(-ic), new Font("Calibri", 11), new SolidBrush(Color.LawnGreen), i, y);
                     g.DrawString(Convert.ToString(ic), new Font("Calibri", 11), new SolidBrush(Color.LawnGreen), x, i);
                     ic = ic - 5;
                 }
-                for (int i = 0; i < Interval * 2; i++)
+                for (int i = 0; i < Interval * 4; i++)
                 {
                     decimal fx = (a * (px * px)) + (b * px) + (c);
-                    int ppx = (px * (400 / Interval)) + 400;
+                    decimal ppx = (px * (400 / Interval)) + 400;
                     decimal pfx = -(fx * (400 / Interval)) + 400;
-                    points[i] = new Point(ppx, Convert.ToInt32(pfx));
-                    px = px + 1;
+                    points[i] = new Point(Convert.ToInt32(ppx), Convert.ToInt32(pfx));
+                    px = px + (1/2);
                 }
             }
             else if (Interval <= 100)
             {
+                points = new Point[Interval*2]
                 for (int i = 0; i <= 800; i = i + (400 / (Interval / 10)))
                 {
                     g.DrawString(Convert.ToString(-ic), new Font("Calibri", 11), new SolidBrush(Color.LawnGreen), i, y);
