@@ -97,7 +97,7 @@ namespace GraphSJG
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
-            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
+            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator || char.IsPunctuation(e.KeyChar))
                 e.Handled = false;
             else
                 e.Handled = true;
@@ -105,7 +105,7 @@ namespace GraphSJG
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar))
+            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsPunctuation(e.KeyChar))
                 e.Handled = false;
             else
                 e.Handled = true;
