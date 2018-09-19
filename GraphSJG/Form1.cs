@@ -28,7 +28,7 @@ namespace GraphSJG
             int x = 400;
             int y = 400;
             decimal px = -Interval;
-            Point[] points;
+            Point[] points = new Point[200];
             Bitmap bmp = new Bitmap(800, 800);
             Graphics g = Graphics.FromImage(bmp);
             g.DrawLine(new Pen(Color.Black, 3), 400, 0, 400, 800);
@@ -53,7 +53,7 @@ namespace GraphSJG
             }
             else if (Interval <= 50)
             {
-                points = new Point[Interval*4]
+                points = new Point[Interval * 4];
                 for (int i = 0; i <= 800; i = i + (400 / (Interval/5)))
                 {
                     g.DrawString(Convert.ToString(-ic), new Font("Calibri", 11), new SolidBrush(Color.LawnGreen), i, y);
@@ -71,7 +71,7 @@ namespace GraphSJG
             }
             else if (Interval <= 100)
             {
-                points = new Point[Interval*2]
+                points = new Point[Interval * 2];
                 for (int i = 0; i <= 800; i = i + (400 / (Interval / 10)))
                 {
                     g.DrawString(Convert.ToString(-ic), new Font("Calibri", 11), new SolidBrush(Color.LawnGreen), i, y);
@@ -81,12 +81,13 @@ namespace GraphSJG
                 for (int i = 0; i < Interval * 2; i++)
                 {
                     decimal fx = (a * (px * px)) + (b * px) + (c);
-                    int ppx = (px * (400 / Interval)) + 400;
+                    decimal ppx = (px * (400 / Interval)) + 400;
                     decimal pfx = -(fx * (400 / Interval)) + 400;
-                    points[i] = new Point(ppx, Convert.ToInt32(pfx)); 
+                    points[i] = new Point(Convert.ToInt32(ppx), Convert.ToInt32(pfx)); 
                     px = px + 1;
                 }
             }
+            
 
             g.DrawLines(new Pen(Color.Blue, 2), points);
             PictureBox display = new PictureBox();
